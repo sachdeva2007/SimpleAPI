@@ -13,13 +13,9 @@ variables:
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
+ 
 
-  steps:
-  - task: DotNetCoreCLI@2
-    inputs:
-          command: test
-          projects: '*/*Tests/.csproj'
-          arguments: '--configuration $(buildConfiguration)'
+
 steps:
 - task: NuGetToolInstaller@1
 
@@ -45,7 +41,7 @@ steps:
 
 - task: PublishBuildArtifacts@1
   displayName: 'publish artifacts'
-  
+
 - task: VSTest@2
   inputs:
     platform: '$(buildPlatform)'
